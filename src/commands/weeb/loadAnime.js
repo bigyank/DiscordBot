@@ -5,9 +5,15 @@ const animeEmbedMsg = require('./embeds/animeEmbed');
 const anime = async (args) => {
   const searchType = 'anime';
   const searchTerm = args.join(' ');
+
+  if (!isNaN(searchTerm)) {
+    return jikanjs.loadAnime(Number(searchTerm));
+  }
+  if (searchTerm.length < 3) {
+    throw new Error('unsatisfied parameter');
+  }
   const [fItem] = await search(searchType, searchTerm);
-  const animeInfo = await jikanjs.loadAnime(fItem.mal_id);
-  return animeInfo;
+  return jikanjs.loadAnime(fItem.mal_id);
 };
 
 const embedAnime = async (args) => {
@@ -19,6 +25,11 @@ module.exports = {
   name: 'anime',
   description: 'load info of a anime',
   async execute({ channel }, args) {
-    channel.send(await embedAnime(args));
+    try {
+      channel.send(await embedAnime(args));
+    } catch (error) {
+      console.log('execute -> error', error);
+      channel.send(error.message);
+    }
   },
 };

@@ -1,5 +1,5 @@
 const search = require('./search');
-const embed = require('./embedSearch');
+const embed = require('./embeds/embedSearch');
 
 const mangaSearch = async (args) => {
   const searchType = 'manga';

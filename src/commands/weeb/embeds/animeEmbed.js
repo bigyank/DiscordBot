@@ -17,7 +17,7 @@ const animeEmbed = async (animeInfo) => {
     )
     .setImage(animeInfo.image_url)
     .setFooter(
-      'API provided bt Jikan',
+      'API provided by Jikan',
       'https://jikan.moe/assets/images/logo/jikan.logo.png'
     );
 

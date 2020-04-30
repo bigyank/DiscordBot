@@ -1,6 +1,3 @@
-/**
- * A ping pong bot, whenever you send "ping", it replies "pong".
- */
 const path = require('path');
 const { Client, Collection } = require('discord.js');
 const glob = require('glob');
